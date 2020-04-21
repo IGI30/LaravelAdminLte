@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Excel;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        Excel::load('emp_email.xls', function ($reader) {
+
+            $reader->each(function($sheet) {
+                //
+            });
+        })->get();
         return view('home');
     }
 }
